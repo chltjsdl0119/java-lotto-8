@@ -19,7 +19,7 @@ public final class LottoMachine {
 
         int lottoCount = calculateLottoCount(totalPrice);
 
-        return IntStream.range(0, LOTTO_NUMBER_COUNT)
+        return IntStream.range(0, lottoCount)
                 .mapToObj(i -> generateLotto())
                 .toList();
     }
@@ -38,7 +38,9 @@ public final class LottoMachine {
 
     private static void validateTotalPrice(int totalPrice) {
         if (totalPrice < LOTTO_PRICE || totalPrice % LOTTO_PRICE != 0) {
-            String.format("[ERROR] 로또 구매 금액은 %d원 단위여야 합니다.", LOTTO_PRICE);
+            throw new IllegalArgumentException(
+                    String.format("[ERROR] 로또 구매 금액은 %d원 단위여야 합니다.", LOTTO_PRICE)
+            );
         }
     }
 }
