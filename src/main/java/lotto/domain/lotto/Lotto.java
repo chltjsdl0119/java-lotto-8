@@ -51,4 +51,8 @@ public class Lotto {
                 .filter(otherLotto.numbers::contains)
                 .count();
     }
+
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
