@@ -10,7 +10,7 @@ import lotto.view.OutputView;
 
 import java.util.List;
 
-public class LottoController {
+public class LottoGameController {
 
     public void run() {
         List<Lotto> lottos = buyLottos();
