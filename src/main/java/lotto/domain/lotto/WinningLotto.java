@@ -8,8 +8,9 @@ public class WinningLotto {
 
     private WinningLotto(Lotto winngingLotto, int bonusNumber) {
         validateBonusNumberRange(bonusNumber);
-        validateBonusNumber(bonusNumber);
         this.winngingLotto = winngingLotto;
+
+        validateBonusNumber(bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
