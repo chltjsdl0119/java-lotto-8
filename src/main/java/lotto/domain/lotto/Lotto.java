@@ -11,7 +11,10 @@ public class Lotto {
         validate(numbers);
         validateDuplicate(numbers);
         validateRange(numbers);
-        this.numbers = numbers;
+
+        this.numbers = numbers.stream()
+                .sorted()
+                .toList();
     }
 
     public boolean containsBonusNumber(int bonusNumber) {
@@ -41,5 +44,11 @@ public class Lotto {
                     String.format("[ERROR] 로또 번호는 %d부터 %d 사이의 숫자여야 합니다.", 1, 45)
             );
         }
+    }
+
+    public int countMatchingNumbers(Lotto otherLotto) {
+        return (int) this.numbers.stream()
+                .filter(otherLotto.numbers::contains)
+                .count();
     }
 }

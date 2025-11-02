@@ -1,7 +1,8 @@
 package lotto.domain.lotto;
 
-public class WinningLotto {
+import lotto.domain.rank.Rank;
 
+public class WinningLotto {
     private final Lotto winngingLotto;
     private final int bonusNumber;
 
@@ -14,6 +15,14 @@ public class WinningLotto {
 
     public static WinningLotto of(Lotto winngingLotto, int bonusNumber) {
         return new WinningLotto(winngingLotto, bonusNumber);
+    }
+
+    public Rank determineRank(Lotto lotto) {
+        int matchCount = winngingLotto.countMatchingNumbers(lotto);
+
+        boolean matchBonusNumber = lotto.containsBonusNumber(bonusNumber);
+
+        return Rank.valueOf(matchCount, matchBonusNumber);
     }
 
     private void validateBonusNumberRange(int bonusNumber) {
